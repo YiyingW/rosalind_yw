@@ -31,7 +31,7 @@ def RNAtoProtein(RNA):
 
 def main():
 	
-	pass
+	print (reverseDNA('ATCG'))
 
 
 if __name__ == "__main__":
