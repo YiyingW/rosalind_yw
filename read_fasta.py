@@ -11,9 +11,6 @@ def url_str(url):
 		else:
 			sequence+= line.decode("utf-8").replace('\n','')
 	return sequence
-
-            
-
 	
 
 def main():
