@@ -1,25 +1,39 @@
-
-text=open('rosalind_sseq.txt')
-data=text.read().replace('\n', '')
-str1=''
-i=14
-while data[i] != '>':
-	str1+=data[i]
-	i+=1
-i=i+14
-str2=''
-while i < len(data):
-	str2+=data[i]
-	i+=1
+import FASTAparser as FA
 
 
-number=0
-j=0
-for j in range(0, len(str2)):
-	while str2[j] != str1[number]:
-		number+=1
-	number+=1
-	print (number,end=' ')
+def splice(str1,str2):
+	position =[]
+	str1_pointer = -1
+	for i in range(0, len(str2)):
+		str1_pointer +=1 
+		while str1[str1_pointer] != str2[i]:
+			str1_pointer += 1
+		position.append(str1_pointer + 1)
+
+	return position 
+
+
+def main():
+
+	DNAstrings=FA.FASTA('data/rosalind_sseq.txt')
+	
+	alist=[]
+	for value in DNAstrings.values():
+		alist.append(value)
+
+	result = ''
+	for item in (splice(alist[0], alist[1])):
+		result += (str(item) +' ')
+	print (result)
+
+
+
+if __name__ == '__main__':
+	main()
+
+
+
+
 
 
 	
